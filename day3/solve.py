@@ -7,7 +7,7 @@ def checksquares(index, data):
 	squares = set()
 
 	if index != 0:
-		squares.add(data[i - 1])
+		squares.add(data[index - 1])
 
 	if index != data_length:
 		squares.add(data[index + 1])
@@ -66,9 +66,9 @@ while i < data_length:
 		number += data[i + 1]
 		i_offset += 1
 
-	if data[i + 2] in digits:
-		number += data[i + 2]
-		i_offset += 1
+		if data[i + 2] in digits:
+			number += data[i + 2]
+			i_offset += 1
 
 	squares = set()
 
@@ -81,10 +81,12 @@ while i < data_length:
 
 	# squares = {"." if x == "\n" else x for x in squares} # squares.replace("\n", ".")
 
-	print("squares: ", squares)
+	# print("squares: ", squares)
 	print("number: ", number)
 
 	if squares & set(symbols):
 		__sum += int(number)
 
 print(__sum)
+
+# newlinet pitäs katkasta etsimisen
