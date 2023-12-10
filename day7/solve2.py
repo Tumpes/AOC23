@@ -28,15 +28,15 @@ def levelHand(hand):
 		else:
 			newCardCount = hand.count(card) + jokerCount
 
-		if(hand == "Q2KJJ"):
-			# print(card, count * (hand.count(card) + fullHouseJokerCount), countcard)
-			print(countcard)
+		# if(hand == "Q2KJJ"):
+		# 	# print(card, count * (hand.count(card) + fullHouseJokerCount), countcard)
+		# 	print(countcard)
 
 		if newCardCount > 3:
 			level = max(newCardCount + 1, level)    # 5 and 4 of a kind; 5 and 6
 
 		if count * (hand.count(card) + fullHouseJokerCount) == 6 and countcard != card:   # Full house
-			level = max(4, level)     ## ei toimi :(
+			level = max(4, level)     
 			fullHouseJokerCount = 0
 
 		if newCardCount == 3:

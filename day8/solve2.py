@@ -17,7 +17,7 @@ instructions = data[0]
 network_unparsed = data
 network_unparsed.pop(0);network_unparsed.pop(0)
 
-network = {}  # 
+network = {}  
 
 for line in network_unparsed:
 
@@ -30,29 +30,54 @@ for line in network_unparsed:
 
 	network.update({key: [left, right]})
 
-node = network.get("AAA")
+nodes = []
+
+for node in network:
+	if node[2] == "A":
+		nodes.append(network.get(node))
+
+# node = network.get("AAA")
 stepCount = 0
 ended = 0
+Zcount = 0
+currentNode = ""
+newNodes = []
 
 while True:
 	for instruction in instructions:
+
+		stepCount += 1
 
 		index = 1
 		if instruction == "L":
 			index = 0
 
-		stepCount += 1
-		print(node)
+		for i in range(len(nodes)):
+			node = nodes[i]
 
-		nextNode = node[index]
+			nextNode = node[index]
+			print(nextNode)
 
-		print(nextNode)
+			if nextNode[2] == "Z":
+				Zcount += 1
 
-		if nextNode == "ZZZ":
-			ended = 1
+			if Zcount == len(nodes):
+				ended = 1
+				print("voitettu ASDASDASD")
+				break
+
+			# print(currentNode)
+
+			currentNode = nextNode
+
+			newNodes.append(network.get(nextNode))
+
+		newNodes.clear()
+
+		if ended:
 			break
-
-		node = network.get(nextNode)
+		Zcount = 0
+		nodes = newNodes
 
 	if ended:
 		break
